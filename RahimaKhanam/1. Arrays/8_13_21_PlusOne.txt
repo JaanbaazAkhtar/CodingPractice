@@ -1,0 +1,27 @@
+// https://leetcode.com/problems/plus-one/
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        
+        // to add one we will start traversing from the end of the array. 
+        // first we check if the last digit is less than 9. if yes then we simply add 1 to it i.e, post increment
+        // else the digit will be equal to 9, in this case we will replace its value with 0 
+and as the pointer keeps decrementing we will look for a non-9 digit and add to it {1, 3, 9, 9, 9} = {1 , 4, 0, 0, 0}
+        
+        for (int i=digits.length-1; i>=0; i--){
+            if (digits[i] <9){
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+            
+        }
+        
+        // the problem arises for arrays like [9, 9, 9], here the array size will increase by 1, and we will need to add 1 at it's first position
+        
+        int[] new_num = new int[digits.length+1];
+        new_num[0] = 1;
+        return new_num;
+        
+    }
+}

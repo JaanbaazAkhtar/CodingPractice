@@ -1,0 +1,19 @@
+// https://leetcode.com/problems/maximum-subarray/
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+        // this problem follows Kadane's Algorithm. to know more about kadane's algorithm refer link https://www.codingninjas.com/blog/2020/09/17/a-quick-look-at-kadanes-algorithm/#:~:text=What%20is%20Kadane's%20Algorithm%3F,a%20one%2Ddimensional%20numeric%20array. 
+        int sum = 0;
+        int max_sum = nums[0];
+        
+        for (int i=0; i<nums.length; i++){
+            sum += nums[i];
+            if (sum > max_sum) max_sum = sum;
+            if (sum < 0) sum = 0;
+        }
+        
+        return max_sum;
+        
+    }
+}
