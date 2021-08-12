@@ -1,0 +1,41 @@
+//https://leetcode.com/problems/plus-one/submissions/
+
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int n=digits.size();
+        if(digits[n-1]!=9)
+            digits[n-1] += 1;
+        else{
+            int j = 1;
+            while(j<n && digits[n-j] == 9 )
+            {
+                j++;
+            }
+            if(j==n && digits[n-j]==9)
+            {
+                digits[n-j] = 1;
+                j--;
+                while(j>0)
+                {
+                    digits[n-j] = 0;
+                    j--;
+                }
+                digits.push_back(0);
+            }
+                
+            else 
+            {
+                digits[n-j] += 1;
+                j--;
+                while(j>0)
+                {
+                    digits[n-j] = 0;
+                    j--;
+                }
+            }
+                
+        }
+        return digits;
+    }
+};
