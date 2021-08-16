@@ -1,0 +1,36 @@
+//https://leetcode.com/problems/height-checker/
+
+//Note-Program can be optimised by using O(nlogn) sorting techniques
+
+class Solution {
+    public int heightChecker(int[] heights) {
+        int n = heights.length;
+        int expectedHeights[] = new int[n];
+        for(int i=0; i<n; i++)
+        {
+            expectedHeights[i] = heights[i];
+        }
+        for(int i=0; i<n-1; i++)
+        {
+            int pos = i;
+            for(int j=i+1; j<n; j++)
+            {
+                if(expectedHeights[j]<expectedHeights[pos])
+                    pos = j;
+            }
+            if(pos!=i)
+            {
+                int t = expectedHeights[pos];
+                expectedHeights[pos] = expectedHeights[i];
+                expectedHeights[i] = t;
+            }
+        }
+        int count = 0;
+        for(int i=0; i<n; i++)
+        {
+            if(expectedHeights[i] != heights[i])
+                count++;
+        }
+        return count;
+    }
+}
