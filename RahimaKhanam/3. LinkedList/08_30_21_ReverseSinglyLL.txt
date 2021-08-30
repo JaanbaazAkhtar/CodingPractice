@@ -1,0 +1,21 @@
+https://leetcode.com/problems/reverse-linked-list/
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        
+        // Initializing pointers
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode next = null;
+        
+        while(curr != null){
+            next = curr.next; // Saving next
+            curr.next = prev; // reversing the direction
+            // Updating the values pf prev and curr
+            prev = curr;
+            curr = next;
+        }
+        
+       return prev;
+    }
+}
