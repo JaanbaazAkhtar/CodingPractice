@@ -1,0 +1,33 @@
+https://leetcode.com/problems/valid-mountain-array/
+
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+        
+        if(arr == null || arr.length < 3) return false;
+        
+        int start = 0, end = arr.length-1;
+        
+        while(start < arr.length){
+            
+            // to check if its continuously increasing 
+            if(start == arr.length -1) return false;
+            
+            if(arr[start] < arr[start+1]){
+                start++;
+            }
+            else break;
+        }
+        
+        while(end >= 0){
+            
+            // to check if its continuously decreasing 
+            if(end == 0) return false;
+            
+            if(arr[end] < arr[end-1]) end--;
+            else break;
+        }
+        
+        return start == end;
+        
+    }
+}

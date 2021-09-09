@@ -1,0 +1,40 @@
+https://leetcode.com/problems/linked-list-cycle/
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        
+        if (head == null) return false;
+        
+        ListNode slow = head;
+        ListNode fast = head.next;
+        
+        while(slow != fast){
+            
+            // it means that it reached the end and there wasn't a cycle
+            if(fast == null || fast.next == null){
+                return false;
+            }
+            
+            // if both the values are not equal then we increment the values to the next pointers
+            // such that slow is always one pointer ahead
+            // and fast is two pointers ahead
+            slow = slow.next;
+            fast = fast.next.next;
+            // if slow and fast becomes same then we break out of the loop and print true
+        }
+        
+        return true;
+        
+    }
+}
