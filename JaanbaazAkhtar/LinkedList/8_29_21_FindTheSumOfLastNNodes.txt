@@ -1,0 +1,32 @@
+//https://practice.geeksforgeeks.org/problems/find-the-sum-of-last-n-nodes-of-the-linked-list/1/
+
+class Solution {
+    
+    //Return the sum of last k nodes
+    public int sum(Node head, int k){
+      //write code here
+      int s = 0;
+      int counter=0;
+      Node ptr = head;
+      
+      //finding total number of nodes
+      while(ptr != null)
+      {
+          counter++;
+          ptr = ptr.next;
+      }
+      Node currNode = head;
+      int n = counter-k; //variable to get the last n nodes
+      while(currNode != null) //loop to calculate the sum
+      {// if the node is not from the last n nodes then simple skip and continue to traverse
+        if(n>0)
+            n--;
+        else{ //if the last n nodes starting point of last n nodes is reached start to find the sum by simply adding
+        //could be done by taking a different loop but I'm a bit lazy LOL...
+            s += currNode.data;
+        }
+        currNode = currNode.next;
+      }
+      return s;
+    }
+}
